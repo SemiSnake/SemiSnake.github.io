@@ -1,0 +1,83 @@
+{
+  "name": "example_map",
+  "description": "Map layout with cubes that reference materials and textures",
+  "units": "meters",
+  "grid": {
+    "enabled": true,
+    "size": [20, 20],
+    "spacing": 1
+  },
+  "camera": {
+    "position": { "x": 8, "y": 6, "z": 12 },
+    "target": { "x": 0, "y": 0, "z": 0 },
+    "fov": 60
+  },
+  "objects": 
+  {
+    "ground": 
+    {
+      "id": "ground_plane",
+      "type": "plane",
+      "position": { "x": 0, "y": -0.01, "z": 0 },
+      "rotation": { "x": -90, "y": 0, "z": 0 },
+      "scale": { "x": 40, "y": 40, "z": 1 },
+      "material": "mat_concrete",
+      "receiveShadow": true,
+      "collidable": true,
+      "visible": true,
+      "uv": { "repeat": [8, 8], "offset": [0, 0] }
+    },
+    "infoCubesData" : 
+    [
+      {
+        "id": "cube_1",
+        "name": "Om meg",
+        "texture" : "selfie.jpg",
+        "infoDivId": "OmMegDiv",
+        "color" : "#ffffff",
+        "position": { "x": 1, "y": 0, "z": 0 },
+        "rotation": { "x": -90, "y": 0, "z": 0 },
+        "scale": { "x": 1, "y": 1, "z": 1 }
+      },
+
+      {
+        "id": "cube_2",
+        "name": "Mine interesser",
+        "texture" : "controller.png",
+        "infoDivId": "MineInteresserDiv",
+        "color" : "#ffffff",
+        "position": { "x": 3, "y": 0, "z": 0 },
+        "rotation": { "x": -90, "y": 0, "z": 0 },
+        "scale": { "x": 1, "y": 1, "z": 1 }
+      },
+
+      {
+        "id": "cube_3",
+        "name": "Lego prosjekt",
+        "texture" : "ev3-logo-transparent.png",
+        "infoDivId": "LegoProsjektDiv",
+        "color" : "#ffffff",
+        "position": { "x": 5, "y": 0, "z": 0 },
+        "rotation": { "x": -90, "y": 0, "z": 0 },
+        "scale": { "x": 1, "y": 1, "z": 1 }
+      },
+
+      {
+        "id": "cube_4",
+        "name": "Programmering",
+        "texture": "java_logo_1.jpg",
+        "infoDivId": "IDATT1003Div",
+        "color" : "#ffffff",
+        "position": { "x": 7, "y": 0, "z": 0 },
+        "rotation": { "x": -90, "y": 0, "z": 0 },
+        "scale": { "x": 1, "y": 1, "z": 1 }
+      }
+    ]
+  },
+  "ambientLight": { "color": "#ffffff", "intensity": 0.6 },
+  "directionalLight": {
+    "color": "#ffffff",
+    "intensity": 0.8,
+    "direction": { "x": -0.6, "y": -1, "z": -0.3 }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "globalSpeed": 0,
+  "animationSpeed": 0.01,
+  "gravityScale": 0.001,
+  "groundVelocity" : {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "player": {
+    "JumpPower": 0.15,
+    "pickupRange": 1,
+    "speed": 0.1,
+    "fov": 75,
+    "geometry": {
+      "x": 0.3,
+      "y": 1,
+      "z": 1
+    },
+    "position": {
+      "x": 0,
+      "y": 0,
+      "z": 1
+    }
+  }
+}
