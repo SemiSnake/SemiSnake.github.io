@@ -17,7 +17,7 @@ window.onload = function()
   // ------------ raycasting --------------
   const raycaster = new THREE.Raycaster();
   const pointer = new THREE.Vector2();
-
+  const clock = new THREE.Clock();
 
   // ----------- Setup ----------------
   const scene = new THREE.Scene();
@@ -237,7 +237,7 @@ window.onload = function()
         jump()
         break;
       case 'ShiftLeft':
-        config.player.speed = 0.2;
+        config.player.speed = 7.5;
         config.player.fov = 100;
         break;
       case 'KeyE':
@@ -271,7 +271,7 @@ window.onload = function()
         stopJump()
         break;
       case 'ShiftLeft':
-        config.player.speed = 0.1;
+        config.player.speed = 5;
         config.player.fov = 75;
         break;
       case 'KeyE':
@@ -306,17 +306,17 @@ window.onload = function()
   }
 
   camera.position.z = 5;
-  
+  var deltaTime = 0;
   function animateCubes()
   {
     for(var i = 0; i<infoCubes.length; i++)
       {
           //infoCubes[i].visible = false;
-          infoCubes[i].rotation.x += 1 * config.animationSpeed * config.globalSpeed
-          infoCubes[i].rotation.y += 1 * config.animationSpeed * config.globalSpeed
+          infoCubes[i].rotation.x += 1 * config.animationSpeed * config.globalSpeed * deltaTime
+          infoCubes[i].rotation.y += 1 * config.animationSpeed * config.globalSpeed * deltaTime
       }
     
-     ground.position.y += (config.groundVelocity.y*config.animationSpeed * config.globalSpeed)
+     ground.position.y += (config.groundVelocity.y*config.animationSpeed * config.globalSpeed * deltaTime)
   }
   var velocity = new Vector3D(0,0,0);
   var acceleration = new Vector3D(0,-9.81*config.gravityScale,0);
@@ -342,22 +342,23 @@ window.onload = function()
       velocity.y = 0
     }
     else{
-      velocity = velocity.add(acceleration.multiply(config.globalSpeed));
-      position = position.add(velocity.multiply(config.globalSpeed));
+      velocity = velocity.add(acceleration.multiply(config.globalSpeed).multiply(deltaTime));
+      position = position.add(velocity.multiply(config.globalSpeed).multiply(deltaTime));
     }
 
   }
 
   function cameraPhysics()
   {
-    var fovChangeSpeed = 0.1
-    camera.fov += (config.player.fov - camera.fov) * fovChangeSpeed * config.globalSpeed
-    console.log(camera.fov)
+    var fovChangeSpeed = 5
+    camera.fov += (config.player.fov - camera.fov) * fovChangeSpeed * config.globalSpeed * deltaTime
     camera.updateProjectionMatrix();
-
+    
   }
 
   function animate() {
+      deltaTime = clock.getDelta();
+      console.log(deltaTime)
       animateCubes();
       playerPhysics();
       cameraPhysics();
@@ -384,10 +385,10 @@ window.onload = function()
           infoCubesHoverText.style.visibility = "hidden";
       }
       
-      if (moveForward) controls.moveForward(config.player.speed * config.globalSpeed);
-      if (moveBackward) controls.moveForward(-config.player.speed * config.globalSpeed);
-      if (moveLeft) controls.moveRight(-config.player.speed * config.globalSpeed);
-      if (moveRight) controls.moveRight(config.player.speed * config.globalSpeed);
+      if (moveForward) controls.moveForward(config.player.speed * config.globalSpeed * deltaTime);
+      if (moveBackward) controls.moveForward(-config.player.speed * config.globalSpeed * deltaTime);
+      if (moveLeft) controls.moveRight(-config.player.speed * config.globalSpeed * deltaTime);
+      if (moveRight) controls.moveRight(config.player.speed * config.globalSpeed * deltaTime);
       if(mousePressed){mousePressed = false;}
       renderer.render( scene, camera );
 
