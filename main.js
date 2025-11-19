@@ -47,7 +47,7 @@ window.onload = function()
   // --------- Rendering for cubes ----------
 
   const geometry = new THREE.BoxGeometry( 1, 1, 1 );
-  const placeHoldermaterial = utils.imageToMaterial("Textures/Placeholder/selfie.jpg");
+  const placeHoldermaterial = utils.imageToMaterial("Textures/CubeMaterials/Grass.jpg");
 
   // -------- SKYBOX ------------
   let matArray = [];
@@ -94,7 +94,7 @@ window.onload = function()
     addCube(cube.position, cube.scale, utils.imageToMaterial(cubeMatPath + cube.texture), cube.id, true);
   }
 
-  var ground = addCube({x:0,y:-2,z:0}, {x:100,y:-1,z:100}, utils.imageToMaterial(cubeMatPath+"controller.png"), "Ground", false);
+  var ground = addCube({x:0,y:-2,z:0}, {x:100,y:1,z:100}, utils.imageToMaterial(cubeMatPath+"Grass.jpg"), "Ground", false);
   // ------------- General functionality for opening/closing sections----------------
   function hideBackground()
   {
