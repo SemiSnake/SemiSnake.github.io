@@ -539,7 +539,61 @@
               Poenget med produktet er å essensielt være en mobil søppelkasse som forhåpentligvis kan bidra til mindre forsøpling.
               <br>
               <br>
-            </p>    
+              Kode:
+              <br>
+              <br>
+            </p>  
+            <pre>
+              <code>
+                from pybricks.hubs import EV3Brick
+                
+                from pybricks.ev3devices import Motor
+                
+                from pybricks.ev3devices import TouchSensor
+                
+                from pybricks.ev3devices import UltrasonicSensor
+                
+                from pybricks.parameters import Port
+                
+                import time
+                
+                from pybricks import *;
+                
+                from pybricks.robotics import DriveBase
+                
+                
+                
+                # Initialize the EV3 Brick.
+                
+                ev3 = EV3Brick()
+                
+                
+                # Initialize the motors.
+                
+                left_motor = Motor(Port.A)
+                
+                right_motor = Motor(Port.D)
+                
+                
+                # Initialize the drive base.
+                
+                robot = DriveBase(left_motor, right_motor, wheel_diameter=55.5, axle_track=104)
+                
+                ts = TouchSensor(Port.S2)
+                
+                pressnum = 0
+                
+                us = UltrasonicSensor(Port.S4)
+                
+                
+                
+                while True:
+                robot.straight(50)
+                if us.distance < 200: robot.turn(30) if us.distance < 250: robot.turn(-60) if us.distance < 250: robot.turn(-150)
+              </code>
+            </pre>
+            <br>
+            <br>  
         </div>
         <div id="LegoProsjektDivCloseButton" class="upperRight closeButton"></div>
     </div>
